@@ -1,19 +1,17 @@
 import React, {Component} from 'react';
-import { Router, Link } from "@reach/router";
+import {Link} from "@reach/router";
+import {deleteProjects} from "./API";
 
 class Project extends Component {
   constructor(props){
     super(props)
   }
 
-
-  // handleTrashClick = () => {
-	// 	var {deleteProjects,id} = this.props;
-	// 	deleteProjects(id);
-  // }
+  handleTrashClick = () => {
+		var {id, refreshData} = this.props;
+		deleteProjects(id).then(res => refreshData())
+  }
   
-
-
   render(){
 
     var {name, description, id} = this.props;
@@ -21,7 +19,7 @@ class Project extends Component {
     return (
 
       <div className="card project">
-	        <img className="card-img-top" src="project.jpg" alt="Card image cap" />
+	        <img className="card-img-top" src="/project.jpg" alt="Card image cap" />
 	        <div className="card-body">
 	          <h5 className="card-title">{name}</h5>
 	          <p className="card-text">{description}</p>

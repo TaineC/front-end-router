@@ -21,6 +21,10 @@ var getTypes = () => {
     return axios.get(urlPrefix+'/types')
 }
 
+var getSingleType = (id) => {
+    return axios.get(urlPrefix+'/types/'+id)
+}
+
 var addProjects = (data) => {
     return axios.post(urlPrefix+'/projects',data)
 }
@@ -29,4 +33,16 @@ var updateProjects = (id,data) => {
     return axios.put(urlPrefix+'/projects/'+id,data)
 }
 
-export {serverUrl, getProjects, getSingleProject, getTypes, addProjects, updateProjects}
+var deleteProjects = (id) => {
+    return axios.delete(urlPrefix+'/projects/'+id)
+}
+
+var authenticate = (data) => {
+    return axios.post(urlPrefix+'/authenticate',data)
+}
+
+var getSingleUser = (id) => {
+    return axios.get(urlPrefix+'/users/'+id)
+}
+
+export {serverUrl, getProjects, getSingleProject, getTypes, addProjects, updateProjects, deleteProjects, getSingleType, authenticate, getSingleUser}

@@ -17,11 +17,15 @@ class RouteProjects extends Component {
   //   })
   // }
 
+  routeGetProjects = () => {
+    getProjects().then(res => {
+      this.setState({projects: res.data})
+    })
+  }
+
   componentDidMount(){
-      getProjects().then(res => {
-        this.setState({projects: res.data})
-      })
-    } 
+    this.routeGetProjects();
+  }
 
   render(){
 
@@ -34,6 +38,7 @@ class RouteProjects extends Component {
             var projectProps = {
               ...item,
               key: item.id,
+              refreshData: this.routeGetProjects,
             };
             return (<Project {...projectProps} />)
           })
